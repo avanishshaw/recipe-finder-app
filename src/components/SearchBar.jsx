@@ -4,20 +4,33 @@ export default function SearchBar({ onSearch }) {
   const [query, setQuery] = useState("");
 
   return (
-    <div className="flex gap-2 my-4">
+    <form
+      onSubmit={e => {
+        e.preventDefault();
+        onSearch(query);
+      }}
+      className="w-full max-w-xl flex gap-2"
+    >
       <input
         type="text"
         value={query}
         onChange={e => setQuery(e.target.value)}
         placeholder="Search recipes..."
-        className="border p-2 rounded flex-1"
+        className="
+          flex-1 p-3 rounded-lg border 
+          border-gray-300 focus:border-blue-400 
+          focus:ring focus:ring-blue-200 focus:outline-none
+          shadow-sm
+        "
       />
       <button
-        onClick={() => onSearch(query)}
-        className="bg-blue-600 text-white px-4 py-2 rounded"
+        type="submit"
+        className="
+          px-6 py-3 rounded-lg bg-blue-600 text-white 
+          font-semibold hover:bg-blue-700 shadow"
       >
         Search
       </button>
-    </div>
+    </form>
   );
 }
