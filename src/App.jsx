@@ -1,18 +1,17 @@
-import { Routes, Route } from 'react-router-dom';
-import HomePage from './pages/Home';
-import RecipeDetailPage from './pages/RecipeDetail';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import RecipeDetail from "./pages/RecipeDetail";
+import FavoritesPage from "./pages/FavoritesPage";
 
-function App() {
+export default function App() {
   return (
-    <div className="bg-gray-50 min-h-screen font-sans">
-      <div className="container mx-auto p-4 sm:p-6 lg:p-8">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/recipe/:recipeId" element={<RecipeDetailPage />} />
-        </Routes>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/recipe/:recipeId" element={<RecipeDetail />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
